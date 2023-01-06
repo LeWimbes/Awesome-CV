@@ -779,7 +779,7 @@
   }
   \ifthenelse{\isundefined{\@lettertitle}}
     {}
-    {\lettertitlestyle{\@lettertitle} \\}
+    {\lettertitlestyle{\@lettertitle} \\\\\\}
   \lettertextstyle{\@letteropening}
 }
 
@@ -792,7 +792,7 @@
   \ifthenelse{\isundefined{\@letterenclosure}}
     {\\}
     {%
-      \\\\\\
+      \\\\\\\\
       \letterenclosurestyle{\@letterenclname: \@letterenclosure} \\
     }
 }
