@@ -713,6 +713,20 @@
 	\skilltypestyle{#1} & \skillsetstyle{#2} \\
 }
 
+% Define an alternative environment for cvskill (cvtags)
+\newenvironment{cvtags}{%
+  \vspace{\acvSectionContentTopSkip}
+  \vspace{0.5mm}
+  \setlength\tabcolsep{1ex}
+  \setlength{\extrarowheight}{0pt}
+}{%
+}
+% Define a tag of cv information(skill)
+% Usage: \cvtag{<skillset>}
+\newcommand*{\cvtag}[1]{%
+  \tikz[baseline]\node[draw=lightgray, rounded corners, inner xsep=1ex, inner ysep=0.75ex, text height=1.5ex, text depth=.25ex, anchor=base]{{\color{text}#1}};
+}
+
 % Define an environment for cvitems(for cventry)
 \newenvironment{cvitems}{%
   \vspace{-4.0mm}
