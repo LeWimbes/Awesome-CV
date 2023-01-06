@@ -90,6 +90,8 @@
 }
 % Solves issues Warning: File `cv.out' has changed
 \RequirePackage{bookmark}
+% Needed to allow .5 langs
+\RequirePackage{trimclip}
 
 %-------------------------------------------------------------------------------
 %                Configuration for directory locations
@@ -711,6 +713,19 @@
 % Usage: \cvskill{<type>}{<skillset>}
 \newcommand*{\cvskill}[2]{%
 	\skilltypestyle{#1} & \skillsetstyle{#2} \\
+}
+% Define a language(skill)
+% Usage: \cvlang{<language>}{<level>}{<info>}
+\newcommand{\cvlang}[3]{%
+  \skilltypestyle{#1} &
+  \foreach \x in {1,...,5}{%
+    \ifdimequal{\x pt - #2 pt}{0.5pt}%
+    {\clipbox*{0pt {-\totalheight} {.5\width} {\totalheight}}{\color{darktext}\faCircle}%
+    \clipbox*{{.5\width} {-\totalheight} {\width} {\totalheight}}{\color{lighttext}\faCircle}}
+    {\ifdimgreater{\x bp}{#2 bp}{\color{lighttext}}{\color{darktext}}\faCircle}%
+    \thinspace
+  }
+  \medspace \skillsetstyle{#3} \\ %
 }
 
 % Define an alternative environment for cvskill (cvtags)
