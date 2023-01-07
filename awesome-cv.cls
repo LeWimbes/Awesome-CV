@@ -92,6 +92,8 @@
 \RequirePackage{bookmark}
 % Needed to allow .5 langs
 \RequirePackage{trimclip}
+% Needed to allow multiple dates
+\RequirePackage{multirow}
 
 %-------------------------------------------------------------------------------
 %                Configuration for directory locations
@@ -643,16 +645,18 @@
 % Define an entry of cv information
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
 \newcommand*{\cventry}[5]{%
-  \vspace{0.5mm}
+  \vspace*{0.5mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}} L{\columnwidth - 4cm} R{4cm}}
     \ifempty{#2#3}
-      {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+      {\entrypositionstyle{#1} & \multirow{2}{\linewidth}{\raggedleft\entrydatestyle{#4}} \\
+      \descriptionstyle{#5} & }
       {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
-      \entrypositionstyle{#1} & \entrydatestyle{#4} \\}
-    \multicolumn{2}{L{\columnwidth}}{\descriptionstyle{#5}}
+      \entrypositionstyle{#1} & \multirow{2}{\linewidth}{\raggedleft\entrydatestyle{#4}} \\
+      \descriptionstyle{#5} & }
   \end{tabular*}%
+  \vspace*{1mm}
 }
 
 % Define an environment for cvsubentry
